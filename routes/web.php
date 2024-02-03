@@ -20,5 +20,6 @@ Route::prefix('admin')->middleware('CheckUser')->group(function () {
     Route::get('add', [BlogController::class, 'create'])->name('create');
     Route::post('saveblog', [BlogController::class, 'saveblog'])->name('saveblog');
     Route::get('delete', [BlogController::class, 'delete'])->name('admin.delete');
-    Route::get('edit/{$id}', [BlogController::class, 'edit'])->name('admin.edit');
+    Route::get('edit', [BlogController::class, 'edit'])->name('admin.edit');
+    Route::post('update{id}', [BlogController::class, 'update'])->name('blogs.update');
 });

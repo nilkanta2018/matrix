@@ -19,7 +19,7 @@
                                 @endif
                                 <form method="POST" action="{{ route('blogs.update', $blog->id) }}">
                                     @csrf
-                                    @method('PUT')
+                                    
                                 @csrf
                                 <div class="form-group row">
                                     <label class="col-md-3" for="oooo">Title</label>
@@ -33,7 +33,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3" for="oooo">Discription</label>
                                     <div class="col-md-9">
-                                        <textarea name="content" class="form-control @error('discription') is-invalid @enderror">{{ $blog->discription }}</textarea>
+                                        <textarea name="discription" class="form-control @error('discription') is-invalid @enderror">{{ $blog->description }}</textarea>
                                         @if ($errors->has('discription'))
                                        <span class="text-danger">{{ $errors->first('discription') }}</span>
                                        @endif

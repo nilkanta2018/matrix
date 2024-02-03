@@ -51,15 +51,15 @@ class BlogController extends Controller
         return redirect("admin/add")->withSuccess('Great! You have Successfully Save');
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($request->id);
         return view('backend/blog/edit', compact('blog'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($request->id);
 
         $request->validate([
             'title' => 'required',
@@ -72,7 +72,7 @@ class BlogController extends Controller
             'status' => 1
         ]);
 
-        return redirect()->route('admin/blog-list')->with('success', 'Blog post updated successfully.');
+        return redirect()->route('blogList')->with('success', 'Blog post updated successfully.');
     }
 
 
@@ -81,6 +81,26 @@ class BlogController extends Controller
      Blog::where('id', '=', $request->id)->delete();
      return redirect("admin/blogList")->withSuccess('Great! You have Successfully Delete');
     }
+
+    public function sendWelcomeEmail()
+    {
+        $userEmail = 'user@example.com';
+
+        Mail::to($userEmail)->send(new WelcomeMail());
+
+        return "Welcome email sent successfully!";
+    }
+
+    /*
+    MAIL_MAILER=smtp
+    MAIL_HOST=your_smtp_host
+    MAIL_PORT=your_smtp_port
+    MAIL_USERNAME=your_smtp_username
+    MAIL_PASSWORD=your_smtp_password
+    MAIL_ENCRYPTION=tls
+    MAIL_FROM_ADDRESS=your_email@example.com
+    MAIL_FROM_NAME="${APP_NAME}"
+    */
 
     
 }

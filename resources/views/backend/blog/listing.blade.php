@@ -38,7 +38,7 @@
                                                 <td>{{$row->description}}</td>
                                                 <td>{{$row->status?'Active':'Inactive'}}</td>
                                                 <td>{{$row->created_at}}</td>
-                                                <td><a href="<a href="{{ route('admin.delete', ['id' => $row->id]) }}">Delete</a></td>
+                                                <td><a href="{{ route('admin.edit', ['id' => $row->id]) }}">Edit</a>/<a href="{{ route('admin.delete', ['id' => $row->id]) }}">Delete</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
