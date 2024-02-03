@@ -23,3 +23,6 @@ Route::prefix('admin')->middleware('CheckUser')->group(function () {
     Route::get('edit', [BlogController::class, 'edit'])->name('admin.edit');
     Route::post('update{id}', [BlogController::class, 'update'])->name('blogs.update');
 });
+
+
+////
